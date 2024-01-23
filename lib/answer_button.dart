@@ -13,6 +13,7 @@ class AnswerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -27,7 +28,10 @@ class AnswerButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
           ),
           onPressed: onTap,
-          child: Text(answerText),
+          child: Text(
+            answerText,
+            textAlign: TextAlign.center,
+          ),
         ),
         const SizedBox(height: 10)
       ],
