@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsSummary extends StatelessWidget {
-  const QuestionsSummary({super.key, required this.summaryData});
+  const QuestionsSummary({Key? key, required this.summaryData})
+      : super(key: key);
 
   final List<Map<String, Object>> summaryData;
 
@@ -13,27 +14,28 @@ class QuestionsSummary extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: summaryData.map<Widget>((data) {
-            return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: data['user_answer'] == data['correct_answer']
-                      ? const Color.fromARGB(255, 57, 128, 156)
-                      : const Color.fromARGB(255, 180, 27, 78),
-                ),
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  ((data['question_index'] as int) + 1).toString(),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: data['user_answer'] == data['correct_answer']
+                        ? const Color.fromARGB(255, 57, 128, 156)
+                        : const Color.fromARGB(255, 180, 27, 78),
+                  ),
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    ((data['question_index'] as int) + 1).toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.fromLTRB(20, 0, 0, 25),
-                width: 250,
-                child: Expanded(
+                Container(
+                  margin: const EdgeInsets.fromLTRB(20, 0, 0, 25),
+                  width: 250,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -42,21 +44,23 @@ class QuestionsSummary extends StatelessWidget {
                       Text(
                         data['user_answer'] as String,
                         style: const TextStyle(
-                            color: Color.fromARGB(255, 24, 99, 35)),
+                          color: Color.fromARGB(255, 24, 99, 35),
+                        ),
                       ),
                       Text(
                         data['correct_answer'] as String,
                         style: GoogleFonts.neucha(
-                            color: data['user_answer'] == data['correct_answer']
-                                ? const Color.fromARGB(255, 57, 128, 156)
-                                : const Color.fromARGB(255, 180, 27, 78),
-                            fontSize: 16),
+                          color: data['user_answer'] == data['correct_answer']
+                              ? const Color.fromARGB(255, 57, 128, 156)
+                              : const Color.fromARGB(255, 180, 27, 78),
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
                 ),
-              )
-            ]);
+              ],
+            );
           }).toList(),
         ),
       ),
