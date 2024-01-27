@@ -42,16 +42,16 @@ class QuestionsSummary extends StatelessWidget {
                       Text(data['question'] as String),
                       const SizedBox(height: 5),
                       Text(
-                        data['user_answer'] as String,
+                        'Correct answer: ${data['correct_answer'] as String}',
                         style: const TextStyle(
                           color: Color.fromARGB(255, 24, 99, 35),
                         ),
                       ),
                       Text(
-                        data['correct_answer'] as String,
+                        'Your answer: ${data['user_answer'] as String}',
                         style: GoogleFonts.neucha(
                           color: data['user_answer'] == data['correct_answer']
-                              ? const Color.fromARGB(255, 57, 128, 156)
+                              ? const Color.fromARGB(255, 24, 99, 35)
                               : const Color.fromARGB(255, 180, 27, 78),
                           fontSize: 16,
                         ),
